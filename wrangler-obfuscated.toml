@@ -1,0 +1,20 @@
+# 先运行 npm install && npm run build:obfuscated，再用：
+# npx wrangler deploy --config wrangler-obfuscated.toml
+name = "node-observatory-obfuscated"
+main = "dist/worker.obfuscated.js"
+compatibility_date = "2026-10-10"
+
+[triggers]
+crons = ["0 0,12 * * *"]
+
+[observability]
+enabled = true
+
+[[d1_databases]]
+binding = "DB"
+database_name = "node-observatory"
+database_id = "REPLACE_WITH_YOUR_D1_DATABASE_ID"
+
+[[kv_namespaces]]
+binding = "KV"
+id = "REPLACE_WITH_YOUR_KV_NAMESPACE_ID"
